@@ -1,0 +1,21 @@
+---
+# This file tells https://pre-commit.com/
+# which hooks are provided by this repo
+# for use by other git repos.
+
+- id: shellcheck
+  name: Test shell scripts with shellcheck
+  description: Shell scripts confirm to shellcheck
+  entry: pre_commit_hooks/shellcheck
+  language: script
+  types: [shell]
+  args: [-e, SC1091]
+  additional_dependencies: [shellcheck]
+
+- id: shellcheck_docker
+  name: Test shell scripts with shellcheck running on a docker
+  description: Shell script confirm to shellcheck
+  entry: koalaman/shellcheck:stable
+  language: docker_image
+  types: [shell]
+  additional_dependencies: [docker]
