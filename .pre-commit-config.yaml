@@ -2,16 +2,30 @@
 repos:
   - repo: local
     hooks:
-      - id: shellcheck
-        name: shellcheck (local)
-        language: script
-        entry: pre_commit_hooks/shellcheck
-        types: [shell]
-        args: [-e, SC1091]
-        additional_dependencies: [shellcheck]
+      #- id: shellcheck
+      #  name: shellcheck (local)
+      #  language: script
+      #  entry: pre_commit_hooks/shellcheck
+      #  types: [shell]
+      #  args: [-e, SC1091]
+      #  additional_dependencies: [shellcheck]
 
       - id: shellcheck_docker
         name: shellcheck docker (local)
         language: docker_image
         entry: koalaman/shellcheck:stable
         types: [shell]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks.git
+    rev: v3.3.0
+    hooks:
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: forbid-new-submodules
+      - id: check-executables-have-shebangs
+
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: 2.1.4
+    hooks:
+      - id: markdownlint
+
