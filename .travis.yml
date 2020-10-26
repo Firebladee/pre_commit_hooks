@@ -1,0 +1,15 @@
+version: ~> 1.0
+
+language: bash
+
+addons:
+  snaps:
+    - name: pre-commit
+      confinement: classic
+
+jobs:
+  include:
+    - stage: shellcheck_linux
+      script: pre-commit try-repo . shellcheck --verbose -a
+    - stage: shellcheck_docker_linux
+      script: pre-commit try-repo . shellcheck_docker --verbose -a
