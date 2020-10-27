@@ -9,6 +9,10 @@ addons:
 
 jobs:
   include:
+    - stage: rubocop
+      script: |-
+        bundle install
+        rubocop
     - stage: shellcheck_linux
       script: pre-commit try-repo . shellcheck --verbose -a
     - stage: shellcheck_docker_linux

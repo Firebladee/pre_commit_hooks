@@ -28,4 +28,5 @@ repos:
     rev: 2.1.4
     hooks:
       - id: markdownlint
+      - id: rubocop
 
